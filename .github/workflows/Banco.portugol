@@ -1,0 +1,203 @@
+programa {
+  funcao inicio() {
+    algoritmo "OnesimoBankGroup"
+// Declaração das variáveis
+var
+    caracter nomeTitular
+    inteiro agenciaCC, numContaCC, dvCC, dvAG
+    real saldoCC, valorSaqueCC, valorDepositoCC
+    inteiro agenciaCP, numContaCP, dvCP
+    real saldoCP, valorAplicacaoCP, valorResgateCP
+    inteiro opcaoMenu, op, Sim, Nao
+
+    
+// Entrada de dados do usuário
+    escreva("Bem-vindo(a) ao OnésimoBankGroup! \n") 
+    escreva("\nNome do titular: ")
+    leia(nomeTitular) 
+    escreva("Número da Agencia: ")
+    leia(agenciaCC)
+    escreva("Dígito Verificador: ")
+    leia(dvAG)   
+        
+// Verifica se o usuário deseja realizar depósito inicial
+      logico teste = verdadeiro 
+      faca{
+        inteiro op 
+        escreva("\nDigite uma das opções: \n")
+        escreva("1 - Conta Corrente:  ")
+        escreva("2 - Conta Poupança:  ")
+        escreva("3 - Sair \n")
+        leia (op)  
+
+        escolha(op){
+
+        caso 1:
+        escreva("\nInforme os dados da sua Conta Corrente.")
+        escreva("\nConta Corrente: ") 
+        leia(numContaCC)
+        escreva("Dígito Verificador: ") 
+        leia(dvCC)
+        escreva("Deseja realizar um deposito inicial? \n(1-Sim / 2-Nao)")
+        leia (op) 
+        
+    escreva("\nInforme o valor do depósito: ")
+    leia(valorDepositoCC)
+    escreva("\nConta poupanca criada automaticamente.")
+    saldoCC <- valorDepositoCC 
+    escreva("\nDeseja acessar o Menu?   ")
+    leia(opcaoMenu)
+    escreva("1 - Saque na conta corrente\n")
+    escreva("2 - Depósito na conta corrente\n")
+    escreva("3 - Exibir conta corrente\n")
+    escreva("4 - Aplicar na conta poupança\n")
+    escreva("5 - Resgatar da conta poupança\n")
+    escreva("6 - Exibir conta poupança\n")
+    escreva("0 - Sair\n")
+    escreva("Escolha uma opção: ")
+    leia(opcaoMenu)
+
+// Realiza a opção escolhida pelo usuário
+    escolha opcaoMenu
+        caso 1:
+            escreva("Informe o valor do saque: ")
+            leia(valorSaqueCC)
+            se valorSaqueCC > saldoCC entao
+                escreva("Saldo insuficiente.")
+            senao
+                saldoCC <- saldoCC - valorSaqueCC
+                escreva("Saque de R$ ", valorSaqueCC, "\nrealizado com sucesso.")
+                           
+        caso 2:
+            escreva("\nInforme o valor do depósito: ")
+            leia(valorDepositoCC)
+            saldoCC <- saldoCC + valorDepositoCC
+            escreva("Depósito de R$ ", valorDepositoCC, "\nrealizado com sucesso.")            
+        caso 3:
+            escreva("Nome do titular: ", nomeTitular)
+            escreva("Agência: ", agenciaCC)
+            escreva("Conta corrente: ", numContaCC, "-", dvCC)
+            escreva("Saldo: R$ ", saldoCC)
+            fimse
+        caso 4:
+            escreva("Informe o valor da aplicação: ")
+            leia(valorAplicacaoCP)
+            se valorAplicacaoCP > saldoCC entao
+                escreva("Saldo insuficiente para a aplicação.")
+            senao
+                saldoCC <- saldoCC - valorAplicacaoCP
+                saldoCP <- saldoCP + valorAplicacaoCP
+                escreva("Aplicação de R$ ", valorAplicacaoCP, " realizada com sucesso.")
+            fimse
+        caso 5:
+            escreva("Informe o valor do resgate: ")
+            leia(valorResgateCP)
+            se valorResgateCP > saldoCP entao
+                escreva("Saldo insuficiente para o resgate.")
+            senao
+                saldoCP <- saldoCP - valorResgateCP
+                saldoCC <- saldoCC + valorResgateCP
+                escreva("Resgate de R$ ", valorResgateCP, " realizado com sucesso.")
+            fimse
+        caso 6:
+            escreva("\nNome do titular: ", nomeTitular)
+            escreva("\nAgência: ", agenciaCP)
+            escreva("Conta poupança: ", numContaCP, "-", dvCP)
+            escreva("Saldo: R$ ", saldoCP)
+        caso 0:
+            escreva("Obrigado por utilizar nossos serviços!")
+        caso contrario:
+            escreva("Opção inválida.")
+    fim escolha
+ate opcaoMenu = 0
+escreva("Número da conta: ")
+leia(numContaCP)
+escreva("Dígito verificador: ")
+leia(dvCP)
+    // Cria automaticamente uma conta poupança
+    escreva("\nConta poupanca criada automaticamente.")
+    senao 
+        (saldoCC <- 0)
+      (saldoCP <- 0)
+  
+        caso 2:
+        escreva("\nInforme os dados da sua Conta Poupança.")
+        escreva("\nConta Poupança: ") 
+        leia(numContaCP)
+        escreva("Dígito Verificador: ") 
+        leia(dvCP)
+        (saldoCP <- 0)
+    senao 
+        escreva("\nDeseja realizar um deposito inicial? \n(1-Sim / 2-Nao)")
+        leia(op) 
+    escreva("Informe o valor do depósito: ")
+    leia(valorAplicacaoCP)
+    (saldoCP <- 0)
+
+    escreva("Deseja acessar o Menu? \n(1-Sim / 2-Nao)")
+        pare
+
+        caso 3:
+        escreva("Muito Obrigado, Volte Sempre!") 
+        pare
+
+        teste = falso 
+      }  
+        }enquanto(teste == verdadeiro) 
+// Executa a opção escolhida pelo usuário
+selecione opcaoMenu
+    caso 1:
+        escreva("Informe o valor do saque: ")
+        leia(valorSaqueCC)
+        se valorSaqueCC > saldoCC entao
+            escreva("Saldo insuficiente.")
+        senao
+            saldoCC <- saldoCC - valorSaqueCC
+            escreva("Saque de R$ ", valorSaqueCC, " realizado com sucesso!")
+        fimse
+    caso 2:
+        escreva("Informe o valor do depósito: ")
+        leia(valorDepositoCC)
+        saldoCC <- saldoCC + valorDepositoCC
+        escreva("Depósito de R$ ", valorDepositoCC, " realizado com sucesso!")
+    caso 3:
+        escreva("Conta corrente")
+        escreva("Titular: ", nomeTitular)
+        escreva("Agência: ", agenciaCC)
+        escreva("Conta: ", numContaCC)
+        escreva("Dígito verificador: ", dvCC)
+        escreva("Saldo: R$ ", saldoCC)
+    caso 4:
+        escreva("Informe o valor da aplicação: ")
+        leia(valorAplicacaoCP)
+        se valorAplicacaoCP > saldoCC entao
+            escreva("Saldo insuficiente.")
+        senao
+            saldoCC <- saldoCC - valorAplicacaoCP
+            saldoCP <- saldoCP + valorAplicacaoCP
+            escreva("Aplicação de R$ ", valorAplicacaoCP, " realizada com sucesso!")
+        fimse
+    caso 5:
+        escreva("Informe o valor do resgate: ")
+        leia(valorResgateCP)
+        se valorResgateCP > saldoCP entao
+            escreva("Saldo insuficiente.")
+        senao
+            saldoCP <- saldoCP - valorResgateCP
+            saldoCC <- saldoCC + valorResgateCP
+            escreva("Resgate de R$ ", valorResgateCP, " realizado com sucesso!")
+        fimse
+    caso 6:
+        escreva("Conta poupança")
+        escreva("Titular: ", nomeTitular)
+        escreva("Agência: ", ageontaCP)
+        escreva("Dígito verificador: ", dvCP)
+        escreva("Saldo: R$ ", saldoCP)
+    caso 0:
+        escreva("Obrigado por utilizar nossos serviços!")
+    caso contrario:
+        escreva("Opção inválida.")
+fimse
+
+  }
+}
