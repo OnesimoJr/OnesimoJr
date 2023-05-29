@@ -1,0 +1,143 @@
+programa
+{
+	
+	funcao inicio()
+	{
+		//Declaração das Variaveis
+		inteiro agencia, conta, digito, saldoPoupanca, deposito, total
+    real agencia, conta, digito, SaldoCorrente, saldoPoupanca, deposito, total, opcao
+		cadeia TitularConta
+          
+    escreva("***Olá Correntista!*** ")
+					escreva("\n***Seja Bem-vindo ao CelioSantosBankGroup*** ")
+			//informações de entrada da conta		
+		escreva("\nDigite o número da sua agencia: ")
+		leia(agencia)
+		escreva("Qual o numero da conta: ")
+		leia(conta)
+		escreva("Qual o digito da conta: ")
+		leia(digito)
+		escreva("Qual o nome do titular da conta: ")
+		leia(TitularConta)
+		escreva("Deseja realizar um deposito inícial em sua conta?\n (1-Sim | 2-Não) ")
+		leia(opcao)
+		//perguntando se gostaria de realizar o deposito inicial da conta
+		se(opcao ==1){
+			escreva("\nQual o valor do deposito? ")
+			leia(deposito)
+
+			SaldoCorrente = deposito
+      escreva("Deseja acessar o Menu? \n (1-Sim | 2-Não)")
+      leia(opcao)
+		}
+		//primeira condição do codigo poupança
+		cadeia ContaPoupanca[5]
+
+		ContaPoupanca[0] = "Conta poupança:"
+		ContaPoupanca[1] = "Titular: " + TitularConta
+		ContaPoupanca[2] = "Agência" + agencia
+		ContaPoupanca[3] = "Conta" + (conta +1) + "-" + (digito +1)
+		ContaPoupanca[4] = "Saldo: R$" + SaldoCorrente
+		//informando que a conta poupança foi criada junto da conta corrente
+		 escreva("\n Sua conta poupança foi criada com sucesso ao abrir a conta corrente!")
+ 
+		//primeira condição do codigo corrente
+     	cadeia ContaCorrente[5]
+     	ContaCorrente[0] = "Conta corrente:"
+    		ContaCorrente[1] = "Titular: " + TitularConta
+     	ContaCorrente[2] = "Agência: " + agencia
+     	ContaCorrente[3] = "Conta: " + conta + "-" + digito
+     	ContaCorrente[4] = "Saldo: R$" + SaldoCorrente
+     	//condição de escolha dos menu corrente e poupança
+     	escreva("\n" + ContaCorrente[0])
+     	escreva("\n \t" + ContaCorrente[1])
+     	escreva("\n \t" + ContaCorrente[2])
+     	escreva("\n \t" + ContaCorrente[3])
+     	escreva("\n \t" + ContaCorrente[4])
+     	escreva("\n" + ContaPoupanca[0])
+     	escreva("\n \t" + ContaPoupanca[1])
+     	escreva("\n \t" + ContaPoupanca[2])
+     	escreva("\n \t" + ContaPoupanca[3])
+     	escreva("\n \t" + ContaPoupanca[4])
+
+       	// Menu de opções da sua conta
+       	logico opcoes = verdadeiro
+       	faca {
+       	inteiro opcao2
+       	escreva("\n \t ***MENU DE OPÇÕES:***")
+          escreva("\n 1 - Deseja consultar o saldo da sua conta corrente?")
+          escreva("\n 2 - Deseja realizar um depósito na conta corrente?")
+          escreva("\n 3 - Deseja realizar saque da conta corrente?")
+          escreva("\n 4 - Deseja consultar o saldo da conta poupança?")
+          escreva("\n 5 - Deseja fazer uma aplicação na sua conta poupança?")
+          escreva("\n 6 - Deseja realizar um resgate da sua conta poupança?")
+          escreva("\n 7 - Exibir informações da sua conta poupança?")
+          escreva("\n 0 - Sair")
+          escreva("\n \t Selecione:")
+          leia(opcao2) 
+   		// Verificação da opção selecionada e determinação do qual condição o codigo devera apresentar
+   		escolha(opcao2){
+   	    	caso 1:
+         	escreva("\n Saldo da sua conta corrente: R$ "+ SaldoCorrente)
+         	pare
+         
+          caso 2:
+         	escreva("\n Digite o valor do depósito: ")
+         	leia(total)
+         	SaldoCorrente = SaldoCorrente + total
+         	escreva("\n Depósito realizado com sucesso na conta corrente!")
+         	pare
+         
+         	caso 3:
+         	escreva("\n Digite o valor do saque: ")
+         	leia(total)
+         
+         	se (total <= SaldoCorrente){
+         	SaldoCorrente = SaldoCorrente - total
+          escreva("\n Seu saque foi realizado com sucesso na sua conta corrente!")
+         
+         	
+         	}senao
+          escreva("\n Verifique o saldo e tente novamente.")
+          pare
+          caso 4:
+         	escreva("\n Saldo da conta poupança: R$ "+ saldoPoupanca)
+         	pare
+         	caso 5:
+         	escreva("\n Digite o valor do aplicação na conta poupança: ")
+         	leia(saldoPoupanca)
+         	saldoPoupanca = saldoPoupanca + total
+         	escreva("\n Aplicação realizada com sucesso na conta poupança!")
+         	pare
+         	caso 6:
+         	escreva("\n Digite o valor de resgate na conta poupança: ")
+         	leia(total)
+         
+          se (total <= saldoPoupanca){
+          saldoPoupanca = saldoPoupanca - total
+          escreva("\n Resgate realizado com sucesso na conta poupança!")
+          }senao
+          escreva("\n Saldo insuficiente na conta poupança.")
+          pare
+
+      // Exibe as informações da conta poupança            
+          caso 7:
+          escreva("\n" +ContaPoupanca[0])
+          escreva("\n \t"+ContaPoupanca[1])
+          escreva("\n \t"+ContaPoupanca[2])
+        	escreva("\n \t"+ContaPoupanca[3])
+          escreva("\n \t Saldo: R$:" + saldoPoupanca)
+         
+         pare
+         // Adicionei aqui as informações que deseja exibir sobre a conta poupança
+          caso 0:
+          escreva("Muito Obrigado, Volte Sempre!") 
+          opcoes = falso
+          pare
+         
+          
+   		}
+   		
+   		}enquanto(opcoes == verdadeiro)
+	}
+}
