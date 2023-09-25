@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @OnesimoJr
-- 👀 I’m interested in  aprender progração
+- 👀 I’m interested in  aprender programação
 - 🌱 I’m currently learning  desenvolvimento de sistemas
 - 💞️ I’m looking to collaborate on  novas aplicações
 - 📫 How to reach me  ramiro.assasepe@gmail.com
